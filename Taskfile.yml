@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+
+version: "3"
+
+tasks:
+  default:
+    desc: Print the help
+    cmd: task -a
+    silent: true
+
+  shell:*:
+    desc: Run shell file using the bundled Go sh.
+    vars:
+      FILENAME: "{{index .MATCH 0}}"
+    cmd: source "./shell/{{.FILENAME}}.sh"
+    silent: true
